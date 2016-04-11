@@ -19,7 +19,7 @@ const urgeColor = tinycolor('#27AAE1');
 const urgencyColor = tinycolor('#F15A29');
 
 // Utilities
-var colorElementsWith = function ({prefix = '', suffixes= [], properties= '', color= ''} = {}) {
+var setElementProperties = function ({prefix = '', suffixes= [], properties= '', value= ''} = {}) {
     _.each(suffixes, function (suffix) {
         var element = document.getElementById(prefix + suffix);
         if (!element) {
@@ -29,7 +29,7 @@ var colorElementsWith = function ({prefix = '', suffixes= [], properties= '', co
             properties = [properties];
         }
         _.each(properties, function (property) {
-            element.style[property] = color;
+            element.style[property] = value;
         });
     })
 };
@@ -101,65 +101,82 @@ Template.visualizationView.onRendered(function () {
                     const urgeColorSvgElementIdSuffixes = ['Urge', 'UrgeCircle'];
                     const urgencyColorSvgElementIdSuffix = 'UrgencyWire';
                     const urgencyCircleColorSvgElementIdSuffixes = ['Urgency_1_', 'Urgency'];
+                    const transformSvgElementIdSuffixes = ['Need', 'UrgeCircle', 'Urgency'];
 
                     // Needs rendering
                     _.each(currentFrameData.needs, function (needSpec, needName) {
-                        // TODO: Handle weights
+                        // Lerp weight
+                        var sx;
+                        var sy;
+                        sx = sy = (needSpec.weight / 11) * 0.5 + 0.5;
+
+                        _.each(transformSvgElementIdSuffixes, function (suffix) {
+                            var element = document.getElementById(needName + suffix);
+                            if (!element) {
+                                return;
+                            }
+                            var bbox = element.getBBox();
+                            var cx = bbox.x + bbox.width / 2.0;
+                            var cy = bbox.y + bbox.height / 2.0;
+                            var transform = 'matrix(' + sx + ', 0, 0, ' + sy + ', ' + (cx - sx * cx) + ', ' + (cy - sy * cy) + ')';
+                            element.style.transform = transform;
+                        });
+
                         var urgeRgb = urgeColor.clone().desaturate(100 * (1 - needSpec.urge)).toRgbString();
 
-                        colorElementsWith({
+                        setElementProperties({
                             prefix: needName,
                             suffixes: urgeColorSvgElementIdSuffixes,
                             properties: 'stroke',
-                            color: urgeRgb
+                            value: urgeRgb
                         });
 
                         var urgencyRgb = urgencyColor.clone().desaturate(100 * (1 - needSpec.urgency)).toRgbString();
 
-                        colorElementsWith({
+                        setElementProperties({
                             prefix: needName,
                             suffixes: [urgencyColorSvgElementIdSuffix],
                             properties: 'stroke',
-                            color: urgencyRgb
+                            value: urgencyRgb
                         });
 
-                        colorElementsWith({
+                        setElementProperties({
                             prefix: needName,
                             suffixes: urgencyCircleColorSvgElementIdSuffixes,
                             properties: ['stroke', 'fill'],
-                            color: urgencyRgb
+                            value: urgencyRgb
                         });
                     });
 
 
                     // Handle net urges
                     var netUrgeColorRgb = urgeColor.clone().desaturate(100 * (1 - currentFrameData.aggregates.combined_urge.value)).toRgbString();
-                    colorElementsWith({
+                    setElementProperties({
                         prefix: 'netUrge',
                         suffixes: _.range(0, 6),
                         properties: 'stroke',
-                        color: netUrgeColorRgb
+                        value: netUrgeColorRgb
                     });
-                    colorElementsWith({
+                    setElementProperties({
                         prefix: 'netUrge',
                         suffixes: [''],
                         properties: 'fill',
-                        color: netUrgeColorRgb
+                        value: netUrgeColorRgb
                     });
 
                     // Net urgency
                     var netUrgencyColorRgb = urgencyColor.clone().desaturate(100 * (1 - currentFrameData.aggregates.combined_urgency.value)).toRgbString();
-                    colorElementsWith({
+                    setElementProperties({
                         prefix: 'netUrgency',
                         suffixes: _.range(0, 7),
                         properties: 'stroke',
-                        color: netUrgencyColorRgb
+                        value: netUrgencyColorRgb
                     });
-                    colorElementsWith({
+                    setElementProperties({
                         prefix: 'netUrgency',
                         suffixes: [''],
                         properties: 'fill',
-                        color: netUrgencyColorRgb
+                        value: netUrgencyColorRgb
                     });
 
                     // Increment the current frame
