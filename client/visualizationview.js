@@ -2,14 +2,18 @@
  * @author Benjamin Berman
  * © 2014 All Rights Reserved
  **/
-const redTinycolor = tinycolor('#E42326');
-const greenTinycolor = tinycolor('#0F763C');
+
 
 // Consumptors
-const inactiveAversiveColorRgb = redTinycolor.clone().greyscale().toRgbString();
-const activeAversiveColorRgb = redTinycolor.clone().toRgbString();
-const inactiveAppetitiveColorRgb = greenTinycolor.clone().greyscale().toRgbString();
-const activeAppetitiveColorRgb = greenTinycolor.clone().toRgbString();
+const aversiveTinycolor = tinycolor('#E42326');
+const appetitiveTinycolor = tinycolor('#0F763C');
+const inactiveAversiveColorRgb = aversiveTinycolor.clone().greyscale().toRgbString();
+const activeAversiveColorRgb = aversiveTinycolor.clone().toRgbString();
+const inactiveAppetitiveColorRgb = appetitiveTinycolor.clone().greyscale().toRgbString();
+const activeAppetitiveColorRgb = appetitiveTinycolor.clone().toRgbString();
+
+// Urges
+const urgeColor = tinycolor('#27AAE1');
 
 Template.visualizationView.onRendered(function () {
     // TODO: Set up the frames for the visualization. For now, just save it to a far
@@ -40,11 +44,11 @@ Template.visualizationView.onRendered(function () {
                     const consumptorSvgElementIdSuffix = 'Consumptor_1_';
                     const gainSvgElementIdSuffix = 'Gain_1_';
 
-                    _.each(currentFrameData.consumptions, function (consumptionSpec, name) {
+                    _.each(currentFrameData.consumptions, function (consumptionSpec, consumptionName) {
                         // Use most efficient find
 
-                        var consumptorElement = document.getElementById(name + consumptorSvgElementIdSuffix);
-                        var gainElement = document.getElementById(name + gainSvgElementIdSuffix);
+                        var consumptorElement = document.getElementById(consumptionName + consumptorSvgElementIdSuffix);
+                        var gainElement = document.getElementById(consumptionName + gainSvgElementIdSuffix);
                         if (!consumptorElement) {
                             // The diagram doesn't have the right names for these things
                             return;
@@ -72,6 +76,26 @@ Template.visualizationView.onRendered(function () {
                         consumptorElement.style.fill = colorRgb;
                         gainElement.style.stroke = colorRgb;
                     });
+
+
+                    // These elements all share the same urge color
+                    const urgeColorSvgElementIdSuffixes = ['Urge', 'UrgeCircle'];
+                    // Needs rendering
+                    _.each(currentFrameData.needs, function (needSpec, needName) {
+                        // TODO: Handle weights
+                        var urgeRgb = urgeColor.clone().desaturate(100 * (1 - needSpec.urge)).toRgbString();
+                        _.each(urgeColorSvgElementIdSuffixes, function (suffix) {
+                            var element = document.getElementById(needName + suffix);
+                            if (!element) {
+                                return;
+                            }
+                            element.style.stroke = urgeRgb;
+                        })
+                    });
+
+
+                    // Handle net urges
+
 
                     // Increment the current frame
                     self.currentFrame++;
