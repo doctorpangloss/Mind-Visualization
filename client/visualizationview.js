@@ -18,6 +18,12 @@ const urgeColor = tinycolor('#27AAE1');
 // Urgencies
 const urgencyColor = tinycolor('#F15A29');
 
+// Pain
+const painColor = tinycolor('#BE1E2D');
+
+// Pleasure
+const pleasureColor = tinycolor('#8CC641');
+
 // Utilities
 var setElementProperties = function ({prefix = '', suffixes= [], properties= '', value= ''} = {}) {
     _.each(suffixes, function (suffix) {
@@ -102,10 +108,14 @@ Template.visualizationView.onRendered(function () {
                     const urgencyColorSvgElementIdSuffix = 'UrgencyWire';
                     const urgencyCircleColorSvgElementIdSuffixes = ['Urgency_1_', 'Urgency'];
                     const transformSvgElementIdSuffixes = ['Need', 'UrgeCircle', 'Urgency'];
-
+                    const pleasureSvgElementIdSuffixes = ['Pleasure'];
+                    const pleasureIndicatorSvgElementIdSuffixes = ['PleasureIndicator'];
+                    const painSvgElementIdSuffixes = ['Pain'];
+                    const painIndicatorSvgElementIdSuffixes = ['PainIndicator'];
                     // Needs rendering
                     _.each(currentFrameData.needs, function (needSpec, needName) {
-                        // Lerp weight
+                        // Weight
+                        // Calculate SVG transform for size
                         var sx;
                         var sy;
                         sx = sy = (needSpec.weight / 11) * 0.5 + 0.5;
@@ -122,6 +132,7 @@ Template.visualizationView.onRendered(function () {
                             element.style.transform = transform;
                         });
 
+                        // Urge
                         var urgeRgb = urgeColor.clone().desaturate(100 * (1 - needSpec.urge)).toRgbString();
 
                         setElementProperties({
@@ -131,6 +142,7 @@ Template.visualizationView.onRendered(function () {
                             value: urgeRgb
                         });
 
+                        // Urgency
                         var urgencyRgb = urgencyColor.clone().desaturate(100 * (1 - needSpec.urgency)).toRgbString();
 
                         setElementProperties({
@@ -145,6 +157,36 @@ Template.visualizationView.onRendered(function () {
                             suffixes: urgencyCircleColorSvgElementIdSuffixes,
                             properties: ['stroke', 'fill'],
                             value: urgencyRgb
+                        });
+
+                        // Pleasure
+                        var pleasureRgb = pleasureColor.clone().desaturate(100 * (1 - needSpec.pleasure)).toRgbString();
+                        setElementProperties({
+                            prefix: needName,
+                            suffixes: pleasureSvgElementIdSuffixes,
+                            properties: 'stroke',
+                            value: pleasureRgb
+                        });
+                        setElementProperties({
+                            prefix: needName,
+                            suffixes: pleasureIndicatorSvgElementIdSuffixes,
+                            properties: 'fill',
+                            value: pleasureRgb
+                        });
+
+                        // Pain
+                        var painRgb = painColor.clone().desaturate(100 * (1 - needSpec.pain)).toRgbString();
+                        setElementProperties({
+                            prefix: needName,
+                            suffixes: painSvgElementIdSuffixes,
+                            properties: 'stroke',
+                            value: painRgb
+                        });
+                        setElementProperties({
+                            prefix: needName,
+                            suffixes: painIndicatorSvgElementIdSuffixes,
+                            properties: 'fill',
+                            value: painRgb
                         });
                     });
 
@@ -177,6 +219,23 @@ Template.visualizationView.onRendered(function () {
                         suffixes: [''],
                         properties: 'fill',
                         value: netUrgencyColorRgb
+                    });
+                    
+                    // Net pleasure and pain
+                    var netPainColorRgb = painColor.clone().desaturate(100*(1-currentFrameData.aggregates.combined_pain.value)).toRgbString();
+                    setElementProperties({
+                        prefix: 'netPain',
+                        suffixes: _.range(0, 3),
+                        properties: 'stroke',
+                        value: netPainColorRgb
+                    });
+
+                    var netPleasureColorRgb = pleasureColor.clone().desaturate(100*(1-currentFrameData.aggregates.combined_pleasure.value)).toRgbString();
+                    setElementProperties({
+                        prefix: 'netPleasure',
+                        suffixes: _.range(0, 3),
+                        properties: 'stroke',
+                        value: netPleasureColorRgb
                     });
 
                     // Increment the current frame
