@@ -2,22 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ff34ae8-f2c3-400f-9cff-cdec878a876f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/meteor_packages_auto_import_browser.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/index.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/visualizationview.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/visualizationview.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/collections.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/importframes.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/publishes.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/main.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/main.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/main.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/main.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/packages" afterPath="$PROJECT_DIR$/.meteor/packages" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/versions" afterPath="$PROJECT_DIR$/.meteor/versions" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/compatibility/tinycolor.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/index.html" afterPath="$PROJECT_DIR$/client/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/visualizationview.js" afterPath="$PROJECT_DIR$/client/visualizationview.js" />
     </list>
     <ignored path="joschasbeach.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,9 +41,16 @@
       <file leaf-file-name="visualizationview.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/visualizationview.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.5">
-              <caret line="12" column="47" selection-start-line="12" selection-start-column="47" selection-end-line="12" selection-end-column="47" />
-              <folding />
+            <state vertical-scroll-proportion="-5.980392">
+              <caret line="480" column="47" selection-start-line="480" selection-start-column="47" selection-end-line="480" selection-end-column="47" />
+              <folding>
+                <element signature="n#style#0;n#path#2;n#g#2;n#svg#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#stop#0;n#linearGradient#0;n#g#1;n#g#0;n#g#2;n#svg#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#polyline#0;n#g#13;n#svg#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#circle#0;n#g#4;n#g#18;n#svg#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#circle#0;n#g#5;n#g#18;n#svg#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#circle#0;n#g#6;n#g#18;n#svg#0;n#template#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -63,8 +58,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.625">
-              <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
+            <state vertical-scroll-proportion="-2.5">
+              <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -73,7 +68,7 @@
       <file leaf-file-name="index.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="-2.5">
               <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
               <folding />
             </state>
@@ -83,11 +78,19 @@
       <file leaf-file-name="visualizationview.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/visualizationview.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.23243801">
-              <caret line="18" column="47" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
-              <folding>
-                <element signature="e#0#65#0" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="0.4803719">
+              <caret line="31" column="38" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="data.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/private/data.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-19.666666">
+              <caret line="174329" column="35" selection-start-line="174329" selection-start-column="25" selection-end-line="174329" selection-end-column="35" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -142,6 +145,7 @@
         <option value="$PROJECT_DIR$/server/importframes.js" />
         <option value="$PROJECT_DIR$/server/publishes.js" />
         <option value="$PROJECT_DIR$/client/index.html" />
+        <option value="$PROJECT_DIR$/client/compatibility/tinycolor.js" />
         <option value="$PROJECT_DIR$/client/visualizationview.js" />
       </list>
     </option>
@@ -154,9 +158,9 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="616" />
-    <option name="y" value="308" />
-    <option name="width" value="1324" />
+    <option name="x" value="143" />
+    <option name="y" value="23" />
+    <option name="width" value="1920" />
     <option name="height" value="1065" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -258,6 +262,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="joschasbeach" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="joschasbeach" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="compatibility" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -342,13 +364,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="616" y="308" width="1324" height="1065" extended-state="0" />
-    <editor active="true" />
+    <frame x="143" y="23" width="1920" height="1065" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32930514" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22708334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32931727" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -388,7 +411,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="47" selection-start-line="12" selection-start-column="47" selection-end-line="12" selection-end-column="47" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#path#2;n#g#2;n#svg#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#stop#0;n#linearGradient#0;n#g#1;n#g#0;n#g#2;n#svg#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#polyline#0;n#g#13;n#svg#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#circle#0;n#g#4;n#g#18;n#svg#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#circle#0;n#g#5;n#g#18;n#svg#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#circle#0;n#g#6;n#g#18;n#svg#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -412,9 +442,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#65#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -422,39 +450,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-64.44444">
           <caret line="9518" column="28" selection-start-line="0" selection-start-column="0" selection-end-line="256474" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/private/data.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.625">
-          <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/importframes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#65#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -468,14 +463,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/visualizationview.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.5">
-          <caret line="12" column="47" selection-start-line="12" selection-start-column="47" selection-end-line="12" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/collections.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -486,13 +473,70 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/visualizationview.js">
+    <entry file="file://$PROJECT_DIR$/server/importframes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23243801">
-          <caret line="18" column="47" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
           <folding>
             <element signature="e#0#65#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.5">
+          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/private/data.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.666666">
+          <caret line="174329" column="35" selection-start-line="174329" selection-start-column="25" selection-end-line="174329" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/compatibility/tinycolor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22004132">
+          <caret line="289" column="8" selection-start-line="289" selection-start-column="8" selection-end-line="289" selection-end-column="8" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.5">
+          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/visualizationview.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.980392">
+          <caret line="480" column="47" selection-start-line="480" selection-start-column="47" selection-end-line="480" selection-end-column="47" />
+          <folding>
+            <element signature="n#style#0;n#path#2;n#g#2;n#svg#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#stop#0;n#linearGradient#0;n#g#1;n#g#0;n#g#2;n#svg#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#polyline#0;n#g#13;n#svg#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#circle#0;n#g#4;n#g#18;n#svg#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#circle#0;n#g#5;n#g#18;n#svg#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#circle#0;n#g#6;n#g#18;n#svg#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/visualizationview.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4803719">
+          <caret line="31" column="38" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
