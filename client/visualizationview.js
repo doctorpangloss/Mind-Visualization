@@ -15,6 +15,25 @@ const activeAppetitiveColorRgb = appetitiveTinycolor.clone().toRgbString();
 // Urges
 const urgeColor = tinycolor('#27AAE1');
 
+// Urgencies
+const urgencyColor = tinycolor('#F15A29');
+
+// Utilities
+var colorElementsWith = function ({prefix = '', suffixes= [], properties= '', color= ''} = {}) {
+    _.each(suffixes, function (suffix) {
+        var element = document.getElementById(prefix + suffix);
+        if (!element) {
+            return;
+        }
+        if (!_.isArray(properties)) {
+            properties = [properties];
+        }
+        _.each(properties, function (property) {
+            element.style[property] = color;
+        });
+    })
+};
+
 Template.visualizationView.onRendered(function () {
     // TODO: Set up the frames for the visualization. For now, just save it to a far
     var self = this;
@@ -80,22 +99,68 @@ Template.visualizationView.onRendered(function () {
 
                     // These elements all share the same urge color
                     const urgeColorSvgElementIdSuffixes = ['Urge', 'UrgeCircle'];
+                    const urgencyColorSvgElementIdSuffix = 'UrgencyWire';
+                    const urgencyCircleColorSvgElementIdSuffixes = ['Urgency_1_', 'Urgency'];
+
                     // Needs rendering
                     _.each(currentFrameData.needs, function (needSpec, needName) {
                         // TODO: Handle weights
                         var urgeRgb = urgeColor.clone().desaturate(100 * (1 - needSpec.urge)).toRgbString();
-                        _.each(urgeColorSvgElementIdSuffixes, function (suffix) {
-                            var element = document.getElementById(needName + suffix);
-                            if (!element) {
-                                return;
-                            }
-                            element.style.stroke = urgeRgb;
-                        })
+
+                        colorElementsWith({
+                            prefix: needName,
+                            suffixes: urgeColorSvgElementIdSuffixes,
+                            properties: 'stroke',
+                            color: urgeRgb
+                        });
+
+                        var urgencyRgb = urgencyColor.clone().desaturate(100 * (1 - needSpec.urgency)).toRgbString();
+
+                        colorElementsWith({
+                            prefix: needName,
+                            suffixes: [urgencyColorSvgElementIdSuffix],
+                            properties: 'stroke',
+                            color: urgencyRgb
+                        });
+
+                        colorElementsWith({
+                            prefix: needName,
+                            suffixes: urgencyCircleColorSvgElementIdSuffixes,
+                            properties: ['stroke', 'fill'],
+                            color: urgencyRgb
+                        });
                     });
 
 
                     // Handle net urges
+                    var netUrgeColorRgb = urgeColor.clone().desaturate(100 * (1 - currentFrameData.aggregates.combined_urge.value)).toRgbString();
+                    colorElementsWith({
+                        prefix: 'netUrge',
+                        suffixes: _.range(0, 6),
+                        properties: 'stroke',
+                        color: netUrgeColorRgb
+                    });
+                    colorElementsWith({
+                        prefix: 'netUrge',
+                        suffixes: [''],
+                        properties: 'fill',
+                        color: netUrgeColorRgb
+                    });
 
+                    // Net urgency
+                    var netUrgencyColorRgb = urgencyColor.clone().desaturate(100 * (1 - currentFrameData.aggregates.combined_urgency.value)).toRgbString();
+                    colorElementsWith({
+                        prefix: 'netUrgency',
+                        suffixes: _.range(0, 7),
+                        properties: 'stroke',
+                        color: netUrgencyColorRgb
+                    });
+                    colorElementsWith({
+                        prefix: 'netUrgency',
+                        suffixes: [''],
+                        properties: 'fill',
+                        color: netUrgencyColorRgb
+                    });
 
                     // Increment the current frame
                     self.currentFrame++;
