@@ -65,6 +65,28 @@ Template.visualizationView.onRendered(function () {
                 self.timer = Meteor.setInterval(function () {
                     var currentFrameData = self.frames[self.currentFrame];
 
+                    // Modulators
+                    // Fix names first
+                    currentFrameData.modulators['securing_x5F_rate'] = currentFrameData.modulators.securing_rate;
+                    currentFrameData.modulators['resolution_x5F_level'] = currentFrameData.modulators.resolution_level;
+                    // Support epistemic competence in the future
+                    if (!!currentFrameData.modulators.epistemic_competence) {
+                        currentFrameData.modulators['epistemic_x5F_competence'] = currentFrameData.modulators.epistemic_competence;
+                    }
+
+
+                    _.each(currentFrameData.modulators, function (modulatorSpec, modulatorName) {
+                        const inverseLerpedModulatorValue = (modulatorSpec.value - modulatorSpec.min) / (modulatorSpec.max - modulatorSpec.min);
+                        var opacity = inverseLerpedModulatorValue * 0.5 + 0.5;
+                        setElementProperties({
+                            prefix: modulatorName,
+                            suffixes: ['Modulator'],
+                            properties: 'opacity',
+                            value: opacity.toString()
+                        });
+                    });
+
+
                     // Consumptors rendering
                     const consumptorSvgElementIdSuffix = 'Consumptor_1_';
                     const gainSvgElementIdSuffix = 'Gain_1_';
@@ -220,9 +242,9 @@ Template.visualizationView.onRendered(function () {
                         properties: 'fill',
                         value: netUrgencyColorRgb
                     });
-                    
+
                     // Net pleasure and pain
-                    var netPainColorRgb = painColor.clone().desaturate(100*(1-currentFrameData.aggregates.combined_pain.value)).toRgbString();
+                    var netPainColorRgb = painColor.clone().desaturate(100 * (1 - currentFrameData.aggregates.combined_pain.value)).toRgbString();
                     setElementProperties({
                         prefix: 'netPain',
                         suffixes: _.range(0, 3),
@@ -230,13 +252,16 @@ Template.visualizationView.onRendered(function () {
                         value: netPainColorRgb
                     });
 
-                    var netPleasureColorRgb = pleasureColor.clone().desaturate(100*(1-currentFrameData.aggregates.combined_pleasure.value)).toRgbString();
+                    var netPleasureColorRgb = pleasureColor.clone().desaturate(100 * (1 - currentFrameData.aggregates.combined_pleasure.value)).toRgbString();
                     setElementProperties({
                         prefix: 'netPleasure',
                         suffixes: _.range(0, 3),
                         properties: 'stroke',
                         value: netPleasureColorRgb
                     });
+
+                    // Modulators
+
 
                     // Increment the current frame
                     self.currentFrame++;
