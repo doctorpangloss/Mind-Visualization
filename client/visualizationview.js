@@ -69,10 +69,13 @@ Template.visualizationView.onRendered(function () {
                     // Fix names first
                     currentFrameData.modulators['securing_x5F_rate'] = currentFrameData.modulators.securing_rate;
                     currentFrameData.modulators['resolution_x5F_level'] = currentFrameData.modulators.resolution_level;
-                    // Support epistemic competence in the future
-                    if (!!currentFrameData.modulators.epistemic_competence) {
-                        currentFrameData.modulators['epistemic_x5F_competence'] = currentFrameData.modulators.epistemic_competence;
-                    }
+
+                    // Support epistemic competence
+                    currentFrameData.modulators['epistemic_x5F_competence'] = {
+                        min: 0,
+                        max: 1,
+                        value: currentFrameData.aggregates.epistemic_competence.value
+                    };
 
 
                     _.each(currentFrameData.modulators, function (modulatorSpec, modulatorName) {
@@ -80,7 +83,7 @@ Template.visualizationView.onRendered(function () {
                         var opacity = inverseLerpedModulatorValue * 0.95 + 0.05;
                         setElementProperties({
                             prefix: modulatorName,
-                            suffixes: ['Modulator'],
+                            suffixes: [modulatorName === 'valence' ? '' : 'Modulator'],
                             properties: 'opacity',
                             value: opacity.toString()
                         });
