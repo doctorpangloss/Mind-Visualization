@@ -83,7 +83,7 @@ Template.visualizationView.onRendered(function () {
                         var opacity = inverseLerpedModulatorValue * 0.95 + 0.05;
                         setElementProperties({
                             prefix: modulatorName,
-                            suffixes: [modulatorName === 'valence' ? '' : 'Modulator'],
+                            suffixes: ['Modulator'],
                             properties: 'opacity',
                             value: opacity.toString()
                         });
@@ -215,7 +215,6 @@ Template.visualizationView.onRendered(function () {
                         });
                     });
 
-
                     // Handle net urges
                     var netUrgeColorRgb = urgeColor.clone().desaturate(100 * (1 - currentFrameData.aggregates.combined_urge.value)).toRgbString();
                     setElementProperties({
@@ -263,7 +262,11 @@ Template.visualizationView.onRendered(function () {
                         value: netPleasureColorRgb
                     });
 
-                    // Modulators
+                    // Handle valence
+                    var valence = currentFrameData.modulators.valence;
+                    var valenceT = (valence.value - valence.min) / (valence.max - valence.min);
+                    var valenceColor = chroma.mix(painColor.toHexString(), pleasureColor.toHexString(), valenceT).css();
+                    document.getElementById('valence').style.fill = valenceColor;
 
 
                     // Increment the current frame
