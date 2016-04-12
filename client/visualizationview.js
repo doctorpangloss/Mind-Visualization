@@ -77,7 +77,7 @@ Template.visualizationView.onRendered(function () {
 
                     _.each(currentFrameData.modulators, function (modulatorSpec, modulatorName) {
                         const inverseLerpedModulatorValue = (modulatorSpec.value - modulatorSpec.min) / (modulatorSpec.max - modulatorSpec.min);
-                        var opacity = inverseLerpedModulatorValue * 0.5 + 0.5;
+                        var opacity = inverseLerpedModulatorValue * 0.95 + 0.05;
                         setElementProperties({
                             prefix: modulatorName,
                             suffixes: ['Modulator'],
