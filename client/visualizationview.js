@@ -24,6 +24,34 @@ const painColor = tinycolor('#BE1E2D');
 // Pleasure
 const pleasureColor = tinycolor('#8CC641');
 
+// Modulator interpolations
+const modulatorInterpolations = {
+    'securing_x5F_rate': {
+        a: '#F15A29',
+        b: '#662D91'
+    },
+    'resolution_x5F_level': {
+        a: '#F7941E',
+        b: '#1C75BC'
+    },
+    'epistemic_x5F_competence': {
+        a: '#FFFFFF',
+        b: '#D7DF23'
+    },
+    arousal: {
+        a: '#F15A29',
+        b: '#1C75BC'
+    },
+    focus: {
+        a: '#27AAE1',
+        b: '#FFF200'
+    },
+    dominance: {
+        a: '#FFFFFF',
+        b: '#2E3192'
+    }
+};
+
 // Utilities
 var setElementProperties = function ({prefix = '', suffixes= [], properties= '', value= ''} = {}) {
     _.each(suffixes, function (suffix) {
@@ -80,12 +108,15 @@ Template.visualizationView.onRendered(function () {
 
                     _.each(currentFrameData.modulators, function (modulatorSpec, modulatorName) {
                         const inverseLerpedModulatorValue = (modulatorSpec.value - modulatorSpec.min) / (modulatorSpec.max - modulatorSpec.min);
-                        var opacity = inverseLerpedModulatorValue * 0.95 + 0.05;
+                        if (!modulatorInterpolations[modulatorName]) {
+                            return;
+                        }
+                        var modulatorColor = chroma.mix(modulatorInterpolations[modulatorName].a, modulatorInterpolations[modulatorName].b, inverseLerpedModulatorValue).css();
                         setElementProperties({
                             prefix: modulatorName,
                             suffixes: ['Modulator'],
-                            properties: 'opacity',
-                            value: opacity.toString()
+                            properties: 'fill',
+                            value: modulatorColor
                         });
                     });
 
